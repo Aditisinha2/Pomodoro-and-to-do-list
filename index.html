@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/vite.svg" /> <!-- Placeholder icon for now -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ZenFocus Pomodoro</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;400;600&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/@phosphor-icons/web"></script>
+</head>
+
+<body>
+  <div id="app">
+    <div class="background-layer" id="bg-layer"></div>
+
+    <main class="glass-panel">
+      <header class="top-bar">
+        <div class="logo">
+          <i class="ph ph-timer"></i>
+          <span>ZenFocus</span>
+        </div>
+        <button id="settings-toggle" class="icon-btn" aria-label="Settings">
+          <i class="ph ph-gear"></i>
+        </button>
+      </header>
+
+      <div class="timer-container">
+        <div class="timer-display" id="time-display">30:00</div>
+        <div class="timer-state" id="timer-state">Focus</div>
+      </div>
+
+      <div class="controls">
+        <button id="start-pause" class="primary-btn">Start</button>
+        <button id="reset" class="secondary-btn" aria-label="Reset">
+          <i class="ph ph-arrow-counter-clockwise"></i>
+        </button>
+      </div>
+
+      <div class="mode-selector">
+        <button class="mode-chip active" data-time="30">30 Min</button>
+        <button class="mode-chip" data-time="45">45 Min</button>
+        <button class="mode-chip" data-time="15">15 Break</button>
+        <button class="mode-chip" data-time="5">5 Break</button>
+      </div>
+
+      <div class="ambiance-panel">
+        <h3>Ambiance</h3>
+        <div class="sound-control">
+          <div class="sound-label">
+            <i class="ph ph-cloud-rain"></i>
+            <span>Rain</span>
+          </div>
+          <input type="range" id="rain-vol" min="0" max="1" step="0.1" value="0">
+        </div>
+      </div>
+    </main>
+
+    <!-- Motivational Sidebar -->
+    <!-- Side Panel Container -->
+    <aside class="side-panel-container">
+      <!-- To-Do List Panel -->
+      <div class="glass-panel todo-panel">
+        <div class="todo-widget">
+          <h3>To-Do List</h3>
+          <div class="todo-input-group">
+            <input type="text" id="todo-input" placeholder="Add a new task...">
+            <button id="add-todo-btn" class="icon-btn">
+              <i class="ph ph-plus-circle"></i>
+            </button>
+          </div>
+          <ul class="todo-list" id="todo-list">
+            <!-- Tasks will appear here -->
+          </ul>
+        </div>
+      </div>
+
+      <!-- Motivation & Heart Panel -->
+      <div class="glass-panel motivation-panel">
+        <div class="heart-container">
+          <div class="heart"></div>
+        </div>
+        <div class="motivation-text" id="motivation-display">
+          "Focus on the step in front of you, not the whole staircase."
+        </div>
+      </div>
+    </aside>
+
+    <div class="settings-modal hidden" id="settings-modal">
+      <div class="modal-content glass-panel">
+        <div class="modal-header">
+          <h2>Background</h2>
+          <button id="close-settings" class="icon-btn"><i class="ph ph-x"></i></button>
+        </div>
+
+        <div class="settings-section">
+          <h3>Presets</h3>
+          <div class="bg-grid">
+            <button class="bg-option active" data-bg="pastel">Pastel Dream</button>
+            <button class="bg-option" data-bg="gradient">Deep Gradient</button>
+          </div>
+        </div>
+
+        <div class="settings-section">
+          <h3>Custom</h3>
+          <div class="bg-grid" id="saved-bg-grid">
+            <label class="bg-option upload-btn">
+              <input type="file" id="bg-upload" accept="image/*" hidden>
+              <span>+ Upload</span>
+            </label>
+            <!-- Saved images will be injected here -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script type="module" src="/src/main.js"></script>
+</body>
+
+</html>
